@@ -556,7 +556,7 @@ class AsyncClient:
     async def fetch_denom_decimals(self, denoms: Optional[List[str]] = None) -> Dict[str, Any]:
         return await self.chain_exchange_api.fetch_denom_decimals(denoms=denoms)
 
-    async def fetch_spot_markets(
+    async def fetch_chain_spot_markets(
         self,
         status: Optional[str] = None,
         market_ids: Optional[List[str]] = None,
@@ -566,7 +566,7 @@ class AsyncClient:
             market_ids=market_ids,
         )
 
-    async def fetch_spot_market(
+    async def fetch_chain_spot_market(
         self,
         market_id: str,
     ) -> Dict[str, Any]:
@@ -574,7 +574,7 @@ class AsyncClient:
             market_id=market_id,
         )
 
-    async def fetch_full_spot_markets(
+    async def fetch_chain_full_spot_markets(
         self,
         status: Optional[str] = None,
         market_ids: Optional[List[str]] = None,
@@ -586,7 +586,7 @@ class AsyncClient:
             with_mid_price_and_tob=with_mid_price_and_tob,
         )
 
-    async def fetch_full_spot_market(
+    async def fetch_chain_full_spot_market(
         self,
         market_id: str,
         with_mid_price_and_tob: Optional[bool] = None,
@@ -596,7 +596,7 @@ class AsyncClient:
             with_mid_price_and_tob=with_mid_price_and_tob,
         )
 
-    async def fetch_spot_orderbook(
+    async def fetch_chain_spot_orderbook(
         self,
         market_id: str,
         order_side: Optional[str] = None,
@@ -613,10 +613,7 @@ class AsyncClient:
             pagination=pagination,
         )
 
-    async def fetch_full_spot_orderbook(self, market_id: str) -> Dict[str, any]:
-        return await self.chain_exchange_api.fetch_l3_spot_orderbook(market_id=market_id)
-
-    async def fetch_trader_spot_orders(
+    async def fetch_chain_trader_spot_orders(
         self,
         market_id: str,
         subaccount_id: str,
@@ -636,7 +633,7 @@ class AsyncClient:
             account_address=account_address,
         )
 
-    async def fetch_spot_orders_by_hashes(
+    async def fetch_chain_spot_orders_by_hashes(
         self,
         market_id: str,
         subaccount_id: str,
@@ -648,7 +645,7 @@ class AsyncClient:
             order_hashes=order_hashes,
         )
 
-    async def fetch_subaccount_orders(
+    async def fetch_chain_subaccount_orders(
         self,
         subaccount_id: str,
         market_id: str,
@@ -658,7 +655,7 @@ class AsyncClient:
             market_id=market_id,
         )
 
-    async def fetch_trader_spot_transient_orders(
+    async def fetch_chain_trader_spot_transient_orders(
         self,
         market_id: str,
         subaccount_id: str,
@@ -684,7 +681,7 @@ class AsyncClient:
             market_id=market_id,
         )
 
-    async def fetch_derivative_orderbook(
+    async def fetch_chain_derivative_orderbook(
         self,
         market_id: str,
         limit_cumulative_notional: Optional[str] = None,
@@ -696,13 +693,7 @@ class AsyncClient:
             pagination=pagination,
         )
 
-    async def fetch_full_derivative_orderbook(
-        self,
-        market_id: str,
-    ) -> Dict[str, Any]:
-        return await self.chain_exchange_api.fetch_l3_derivative_orderbook(market_id=market_id)
-
-    async def fetch_trader_derivative_orders(
+    async def fetch_chain_trader_derivative_orders(
         self,
         market_id: str,
         subaccount_id: str,
@@ -712,7 +703,7 @@ class AsyncClient:
             subaccount_id=subaccount_id,
         )
 
-    async def fetch_account_address_derivative_orders(
+    async def fetch_chain_account_address_derivative_orders(
         self,
         market_id: str,
         account_address: str,
@@ -722,7 +713,7 @@ class AsyncClient:
             account_address=account_address,
         )
 
-    async def fetch_derivative_orders_by_hashes(
+    async def fetch_chain_derivative_orders_by_hashes(
         self,
         market_id: str,
         subaccount_id: str,
@@ -734,7 +725,7 @@ class AsyncClient:
             order_hashes=order_hashes,
         )
 
-    async def fetch_trader_derivative_transient_orders(
+    async def fetch_chain_trader_derivative_transient_orders(
         self,
         market_id: str,
         subaccount_id: str,
@@ -744,7 +735,7 @@ class AsyncClient:
             subaccount_id=subaccount_id,
         )
 
-    async def fetch_derivative_markets(
+    async def fetch_chain_derivative_markets(
         self,
         status: Optional[str] = None,
         market_ids: Optional[List[str]] = None,
@@ -756,7 +747,7 @@ class AsyncClient:
             with_mid_price_and_tob=with_mid_price_and_tob,
         )
 
-    async def fetch_derivative_market(
+    async def fetch_chain_derivative_market(
         self,
         market_id: str,
     ) -> Dict[str, Any]:
@@ -770,19 +761,21 @@ class AsyncClient:
     async def fetch_subaccount_trade_nonce(self, subaccount_id: str) -> Dict[str, Any]:
         return await self.chain_exchange_api.fetch_subaccount_trade_nonce(subaccount_id=subaccount_id)
 
-    async def fetch_positions(self) -> Dict[str, Any]:
+    async def fetch_chain_positions(self) -> Dict[str, Any]:
         return await self.chain_exchange_api.fetch_positions()
 
-    async def fetch_subaccount_positions(self, subaccount_id: str) -> Dict[str, Any]:
+    async def fetch_chain_subaccount_positions(self, subaccount_id: str) -> Dict[str, Any]:
         return await self.chain_exchange_api.fetch_subaccount_positions(subaccount_id=subaccount_id)
 
-    async def fetch_subaccount_position_in_market(self, subaccount_id: str, market_id: str) -> Dict[str, Any]:
+    async def fetch_chain_subaccount_position_in_market(self, subaccount_id: str, market_id: str) -> Dict[str, Any]:
         return await self.chain_exchange_api.fetch_subaccount_position_in_market(
             subaccount_id=subaccount_id,
             market_id=market_id,
         )
 
-    async def fetch_subaccount_effective_position_in_market(self, subaccount_id: str, market_id: str) -> Dict[str, Any]:
+    async def fetch_chain_subaccount_effective_position_in_market(
+        self, subaccount_id: str, market_id: str
+    ) -> Dict[str, Any]:
         return await self.chain_exchange_api.fetch_subaccount_effective_position_in_market(
             subaccount_id=subaccount_id,
             market_id=market_id,
